@@ -1,0 +1,43 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+
+</head>
+<body>
+
+    <input type="file" id="file" accept="image/*">
+
+<script type="text/javascript" src="dist/image-compressor.min.js"></script>
+<script type="text/javascript">
+
+
+document.getElementById('file').addEventListener('change', (e) => {
+  const file = e.target.files[0];
+
+  if (!file) {
+    return;
+  }
+
+  new ImageCompressor(file, {
+    quality: .6,
+    success(result) {
+      const formData = new FormData();
+
+      formData.append('file', result, result.name);
+
+      // Send the compressed image file to server with XMLHttpRequest.
+      axios.post('/path/to/upload', formData).then(() => {
+        console.log('Upload success');
+      });
+    },
+    error(e) {
+      console.log(e.message);
+    },
+  });
+});
+    
+</script>
+</body>
+</html>
