@@ -1,47 +1,56 @@
-<<<<<<< HEAD
+
 
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
-
+	<title>Effects of compression</title>
+	<style type="text/css">
+		
+		body {
+			font-family: Helvetica, Arial;
+		}
+		.container {
+			max-width: 640px;
+			width: 100%;
+			margin: auto;
+		}
+		#preview {
+			width: 100%;
+			height: auto;
+		}
+	</style>
 </head>
 <body>
 
-    <input type="file" id="file" accept="image/*">
-
-<script type="text/javascript" src="dist/image-compressor.min.js"></script>
-<script type="text/javascript">
+<div class="container">
 
 
-document.getElementById('file').addEventListener('change', (e) => {
-  const file = e.target.files[0];
+	<p>Upload an image and watch the file size before and after. </p>
 
-  if (!file) {
-    return;
-  }
+	<div>
+		<input type="file" name="" id="upload" accept="image/*">
+	</div>
+	<div>
+		<img src="" alt="" id="preview50">
+		<p id="output50"></p>
+	</div>
+	<div>
+		<img src="" alt="" id="preview25">
+		<p id="output25"></p>
+	</div>
+	<div>
+		<img src="" alt="" id="preview10">
+		<p id="output10"></p>
+	</div>
+	<div>
+		<img src="" alt="" id="preview5">
+		<p id="output5"></p>
+	</div>
 
-  new ImageCompressor(file, {
-    quality: .6,
-    success(result) {
-      const formData = new FormData();
 
-      formData.append('file', result, result.name);
-
-      // Send the compressed image file to server with XMLHttpRequest.
-      axios.post('/path/to/upload', formData).then(() => {
-        console.log('Upload success');
-      });
-    },
-    error(e) {
-      console.log(e.message);
-    },
-  });
-});
-    
-</script>
+</div>
+	
+<script type="text/javascript" src='src/compress.js'></script>
+<script type="text/javascript" src='src/index.js'></script>
 </body>
 </html>
-=======
-hi
->>>>>>> refs/remotes/origin/master
